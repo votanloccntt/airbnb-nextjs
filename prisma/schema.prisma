@@ -34,12 +34,12 @@ model Account {
   providerAccountId String
   refresh_token     String? @db.String
   access_token      String? @db.String
-  exprires_at       Int?
+  expires_at        Int?
   token_type        String?
   scope             String?
   id_token          String? @db.String
   session_state     String?
-  User              User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -56,7 +56,7 @@ model Listing {
   guestCount    Int
   locationValue String
   price         Int
-  User          User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user          User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId        String?       @db.ObjectId
   reservations  Reservation[]
 }
@@ -67,8 +67,8 @@ model Reservation {
   endDate    DateTime
   totalPrice Int
   createdAt  DateTime @default(now())
-  User       User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user       User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     String?  @db.ObjectId
-  Listing    Listing? @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  listing    Listing? @relation(fields: [listingId], references: [id], onDelete: Cascade)
   listingId  String?  @db.ObjectId
 }

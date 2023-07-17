@@ -1,7 +1,6 @@
 "use client";
 
 import useRegisterModal from "@/app/hooks/useRegisterModal";
-import axios from "axios";
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Modal from "./Modal";
@@ -27,7 +26,7 @@ const LoginModal = () => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      email: "",
+      name: "",
       password: "",
     },
   });
@@ -75,24 +74,24 @@ const LoginModal = () => {
       <hr />
       <Button
         outline
-        label="Continue with Google"
+        label="Login with Google"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn("google")}
       />
       <Button
         outline
-        label="Continue with Github"
+        label="Login with Github"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn("github")}
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex flex-row items-center gap-2">
-          <div>Already have an account?</div>
+          <div>You dont have account?</div>
           <div
-            onClick={registerModal.onClose}
+            onClick={() => (registerModal.onOpen(), loginModal.onClose())}
             className="text-neutral-800 cursor-pointer transition hover:scale-125"
           >
-            Login
+            Register
           </div>
         </div>
       </div>
