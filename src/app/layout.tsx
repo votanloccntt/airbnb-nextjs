@@ -13,8 +13,8 @@ import SearchModal from "./components/modals/SearchModal";
 const font = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Airbnb",
-  description: "Airbnb clone",
+  title: "TanLoc-Onlinebookingsystem",
+  description: "TanLoc Online Booking system",
 };
 
 export default async function RootLayout({
